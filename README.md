@@ -43,7 +43,7 @@ During the submission process, paste the contents of the grader user's SSH key i
   ```
   sudo visudo
   ```
-   Add line to give grader the permission to sudo.
+* Add line to give grader the permission to sudo.
   ```
   grader  ALL=(ALL:ALL) ALL
   ```
