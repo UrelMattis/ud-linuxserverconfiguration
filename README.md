@@ -39,15 +39,15 @@ During the submission process, paste the contents of the grader user's SSH key i
   sudo adduser grader
   ```
 * Give grader the permission to sudo.
-  * Edit the subdoer file.
+   Edit the subdoer file.
   ```
   sudo visudo
   ```
-  * Add line to give grader the permission to sudo.
+   Add line to give grader the permission to sudo.
   ```
   grader  ALL=(ALL:ALL) ALL
   ```
-  * Save and Exit using Ctl + X and then confirm with Y.
+   Save and Exit using Ctl + X and then confirm with Y.
   
 * Test sudo access.
   ```
