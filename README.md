@@ -87,8 +87,38 @@ During the submission process, paste the contents of the grader user's SSH key i
  ## Deploy the Item Catalog project.
 * Clone and setup your Item Catalog project from the Github repository you created earlier in this Nanodegree program.
   * Create ```/var/www/catalog/``` directory.
-* Clone the catalog project:
- 
+* Clone the catalog project: ```sudo git clone https://github.com/UrelMattis/ud-itemcatalogproject.git```
+* Create catalog.wsgi file and place text inside.
+  ```
+  import sys
+  import logging
+  logging.basicConfig(stream=sys.stderr)
+  sys.path.insert(0, "/var/www/catalog/")
+
+  from catalog import app as application
+  application.secret_key = 'supersecretkey'
+  ```
+* Rename application.py to init.py ```mv application.py __init__.py```.
+* Install and create virtual environment.
+  ```
+  sudo pip install virtualenv
+  sudo virtualenv venv
+  source venv/bin/activate
+  sudo chmod -R 777 venv
+  ```
+* Install Flask and other dependencies
+  * Install pip 
+  ```sudo apt-get install python-pip```
+  * Install flask ```pip install Flask```
+  * Install other dependencies 
+  ```
+  sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils
+  sudo pip install requests
+  sudo pip install --upgrade oauth2client
+  sudo apt-get install libpq-dev
+  sudo pip install psycopg2
+  ```
+  
 
 
 
