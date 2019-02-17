@@ -46,10 +46,12 @@ Now that you have a working instance, you can get right into the project!
 # Project Walkthrough
 
 Get your server.
-1. Start a new Ubuntu Linux server instance on Amazon Lightsail. There are full details on setting up your Lightsail instance on the next page.
-2. Follow the instructions provided to SSH into your server.
+* Start a new Ubuntu Linux server instance on Amazon Lightsail. There are full details on setting up your Lightsail instance on the next page.
+* Follow the instructions provided to SSH into your server.
 
 Secure your server.
-3. Update all currently installed packages.
-4. Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
-5. Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
+* Update all currently installed packages.
+  ```sudo apt-get update```
+  ```sudo apt-get upgrade```
+* Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
+* Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
