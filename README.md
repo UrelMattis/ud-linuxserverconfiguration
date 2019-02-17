@@ -7,10 +7,8 @@ You will take a baseline installation of a Linux server and prepare it to host y
 Create a new GitHub repository and add a file named README.md.
 
 Your README.md file should include all of the following:
-i. IP Address: 
-ii. The complete URL to your hosted web application.
-iii. A summary of software you installed and configuration changes made.
-iv. A list of any third-party resources you made use of to complete this project.
+i. IP Address: 52.91.99.71
+ii. The complete URL to your hosted web application: ec2-52-91-99-71.us-east-1.compute.amazonaws.com
 
 Locate the SSH key you created for the grader user.
 
@@ -69,15 +67,56 @@ Now that you have a working instance, you can get right into the project!
   ## Give Grader Access
 * Create a new user account named grader.
   ```
-  sudo adduser grade
+  sudo adduser grader
   ```
 * Give grader the permission to sudo.
+  * Edit the subdoer file.
   ```
-  usermod -aG sudo username
+  sudo visudo
   ```
+  * Add line to give grader the permission to sudo.
+  ```
+  grader  ALL=(ALL:ALL) ALL
+  ```
+  * Save and Exit using Ctl + X and then confirm with Y.
+  
 * Test sudo access.
   ```
-  su - username
-  sudo whoami
+  su -grader
+  sudo -l
   ```
 * Create an SSH key pair for grader using the ssh-keygen tool.
+  * Run command ```ssh-keygen```.
+  * Enter blank response for grader information.
+  * Copy contents from .pub file.
+  * Log into grader VM.
+
+* Run commands.
+  ```
+  mkdir /home/grader/.ssh
+  sudo nano ~/.ssh/authorized_keys
+  chmod 700 /home/grader/.ssh
+  chmod 644 /home/grader/.ssh/authorized_keys
+  ```
+ * Check ```/etc/ssh/sshd_config``` to verify if PasswordAuthentication is set to no.
+ 
+ * Restart ```sudo service ssh restart```.
+ 
+  ## Prepare to deploy your project.
+ * Configure the local timezone to UTC. 
+  * Login to grader VM and run command ```sudo dpkg-reconfigure tzdata```. 
+  * Set to UTC.
+ * Install and configure Apache to serve a Python mod_wsgi application.
+  * Run command ```sudo apt-get install apache2```.
+ * Install and configure PostgreSQL:
+  * Run ```sudo apt-get install libapache2-mod-wsgi python-dev``` command.
+  * Enable mod_wsgi with ```sudo a2enmod wsgi``` command.
+  * Start the web server with ```sudo service apache2 start``` command.
+ * Install git.
+ 
+ ## Deploy the Item Catalog project.
+
+
+
+
+ 
