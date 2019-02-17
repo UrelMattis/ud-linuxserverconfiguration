@@ -106,11 +106,11 @@ During the submission process, paste the contents of the grader user's SSH key i
   source venv/bin/activate
   sudo chmod -R 777 venv
   ```
-* Install Flask and other dependencies
-  * Install pip 
-  ```sudo apt-get install python-pip```
-  * Install flask ```pip install Flask```
-  * Install other dependencies 
+* Install Flask and other dependencies.
+  * Install pip. 
+  ```sudo apt-get install python-pip```.
+  * Install flask ```pip install Flask```.
+  * Install other dependencies. 
   ```
   sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils
   sudo pip install requests
