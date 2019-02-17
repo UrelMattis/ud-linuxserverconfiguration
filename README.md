@@ -23,9 +23,9 @@ During the submission process, paste the contents of the grader user's SSH key i
   sudo apt-get upgrade
   ```
 * Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
-  * Edit the ```etc/ssh/sshd_config``` file by using this command ```sudo nano /etc/ssh/sshd_config```.
-  * Change the port number on line 5 from 22 to 2200.
-  * Save and Exit using Ctl + X and then confirm with Y.
+   Edit the ```etc/ssh/sshd_config``` file by using this command ```sudo nano /etc/ssh/sshd_config```.
+   Change the port number on line 5 from 22 to 2200.
+   Save and Exit using Ctl + X and then confirm with Y.
 * Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
   ```
   sudo ufw allow 2200/tcp
