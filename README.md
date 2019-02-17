@@ -7,7 +7,7 @@ You will take a baseline installation of a Linux server and prepare it to host y
 Create a new GitHub repository and add a file named README.md.
 
 Your README.md file should include all of the following:
-i. IP Address: 18.206.209.6
+i. IP Address: 
 ii. The complete URL to your hosted web application.
 iii. A summary of software you installed and configuration changes made.
 iv. A list of any third-party resources you made use of to complete this project.
@@ -45,13 +45,39 @@ Now that you have a working instance, you can get right into the project!
 
 # Project Walkthrough
 
-Get your server.
+## Get your server.
 * Start a new Ubuntu Linux server instance on Amazon Lightsail. There are full details on setting up your Lightsail instance on the next page.
 * Follow the instructions provided to SSH into your server.
 
-Secure your server.
+## Secure your server.
 * Update all currently installed packages.
-  ```sudo apt-get update```
-  ```sudo apt-get upgrade```
+  ```
+  sudo apt-get update
+  sudo apt-get upgrade
+  ```
 * Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
+  * Edit the ```etc/ssh/sshd_config``` file by using this command ```sudo nano /etc/ssh/sshd_config```.
+  * Change the port number on line 5 from 22 to 2200.
+  * Save and Exit using Ctl + X and then confirm with Y.
 * Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
+  ```
+  sudo ufw allow 2200/tcp
+  sudo ufw allow 80/tcp
+  sudo ufw allow 123/udp
+  sudo ufw enable
+  ```
+  ## Give Grader Access
+* Create a new user account named grader.
+  ```
+  sudo adduser grade
+  ```
+* Give grader the permission to sudo.
+  ```
+  usermod -aG sudo username
+  ```
+* Test sudo access.
+  ```
+  su - username
+  sudo whoami
+  ```
+* Create an SSH key pair for grader using the ssh-keygen tool.
