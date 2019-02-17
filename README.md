@@ -73,8 +73,8 @@ During the submission process, paste the contents of the grader user's SSH key i
  
   ## Prepare to deploy your project.
 * Configure the local timezone to UTC. 
-Login to grader VM and run command ```sudo dpkg-reconfigure tzdata```. 
-Set to UTC.
+  * Login to grader VM and run command ```sudo dpkg-reconfigure tzdata```. 
+  Set to UTC.
 * Install and configure Apache to serve a Python mod_wsgi application.
   * Run command ```sudo apt-get install apache2```.
 * Install and configure PostgreSQL:
@@ -82,9 +82,13 @@ Set to UTC.
   * Enable mod_wsgi with ```sudo a2enmod wsgi``` command.
   * Start the web server with ```sudo service apache2 start``` command.
 * Install git.
+  ```sudo apt-get install git```
  
  ## Deploy the Item Catalog project.
-
+* Clone and setup your Item Catalog project from the Github repository you created earlier in this Nanodegree program.
+  * Create ```/var/www/catalog/``` directory.
+* Clone the catalog project:
+ 
 
 
 
