@@ -5,6 +5,7 @@ You will take a baseline installation of a Linux server and prepare it to host y
 
 # Project Overview
 * IP Address: 52.91.99.71
+* Accessible SSH port: 2200
 * The complete URL to your hosted web application: ec2-52-91-99-71.us-east-1.compute.amazonaws.com
 
 Locate the SSH key you created for the grader user.
@@ -123,8 +124,41 @@ During the submission process, paste the contents of the grader user's SSH key i
   * Run command ```sudo nano /etc/apache2/sites-available/catalog.conf```
   * Insert code 
   ```
-  
+  <VirtualHost *:80>
+    ServerName 52.91.99.71
+    ServerAlias ec2-52-91-99-71.us-east-1.compute.amazonaws.com
+    ServerAdmin admin@52.91.99.71
+    WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
+    WSGIProcessGroup catalog
+    WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+    <Directory /var/www/catalog/catalog/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    Alias /static /var/www/catalog/ud-itemcatalogproject/catalog/static
+    <Directory /var/www/catalog/ud-itemcatalogproject/catalog/static/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    LogLevel warn
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+  </VirtualHost>
   ```
+  * Install and configure PostgreSQL
+  ```
+  sudo apt-get install libpq-dev python-dev
+  sudo apt-get install postgresql postgresql-contrib
+  sudo su - postgres
+  psql
+  CREATE USER catalog WITH PASSWORD 'catalog';
+  ALTER USER catalog CREATEDB;
+  CREATE DATABASE catalog WITH OWNER catalog;
+  \c catalog
+  REVOKE ALL ON SCHEMA public FROM public;
+  GRANT ALL ON SCHEMA public TO catalog;
+  ```
+  * Restart Apache and launch app ```sudo service apache2 restart```.
 
 
 
