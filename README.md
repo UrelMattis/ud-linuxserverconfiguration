@@ -87,26 +87,27 @@ During the submission process, paste the contents of the grader user's SSH key i
  ## Deploy the Item Catalog project.
 * Clone and setup your Item Catalog project from the Github repository you created earlier in this Nanodegree program.
   * Create ```/var/www/catalog/``` directory.
-* Clone the catalog project: ```sudo git clone https://github.com/UrelMattis/ud-itemcatalogproject.git```
-* Create catalog.wsgi file and place text inside.
-  ```
-  import sys
-  import logging
-  logging.basicConfig(stream=sys.stderr)
-  sys.path.insert(0, "/var/www/catalog/")
+  * Clone the catalog project: ```sudo git clone https://github.com/UrelMattis/ud-itemcatalogproject.git```
+* Set up your server.
+  * Create catalog.wsgi file and place text inside.
+    ```
+    import sys
+    import logging
+    logging.basicConfig(stream=sys.stderr)
+    sys.path.insert(0, "/var/www/catalog/")
 
-  from catalog import app as application
-  application.secret_key = 'supersecretkey'
-  ```
-* Rename application.py to init.py ```mv application.py __init__.py```.
-* Install and create virtual environment.
-  ```
-  sudo pip install virtualenv
-  sudo virtualenv venv
-  source venv/bin/activate
-  sudo chmod -R 777 venv
-  ```
-* Install Flask and other dependencies.
+    from catalog import app as application
+    application.secret_key = 'supersecretkey'
+    ```
+  * Rename application.py to init.py ```mv application.py __init__.py```.
+  * Install and create virtual environment.
+    ```
+    sudo pip install virtualenv
+    sudo virtualenv venv
+    source venv/bin/activate
+    sudo chmod -R 777 venv
+    ```
+  * Install Flask and other dependencies.
   * Install pip. 
   ```sudo apt-get install python-pip```.
   * Install flask ```pip install Flask```.
@@ -118,7 +119,12 @@ During the submission process, paste the contents of the grader user's SSH key i
   sudo apt-get install libpq-dev
   sudo pip install psycopg2
   ```
+  * Configure and enable a new virtual host
+  * Run command ```sudo nano /etc/apache2/sites-available/catalog.conf```
+  * Insert code 
+  ```
   
+  ```
 
 
 
