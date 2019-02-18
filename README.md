@@ -82,8 +82,7 @@ During the submission process, paste the contents of the grader user's SSH key i
   * Run ```sudo apt-get install libapache2-mod-wsgi python-dev``` command.
   * Enable mod_wsgi with ```sudo a2enmod wsgi``` command.
   * Start the web server with ```sudo service apache2 start``` command.
-* Install git.
-  ```sudo apt-get install git```
+* Install git ```sudo apt-get install git```.
  
  ## Deploy the Item Catalog project.
 * Clone and setup your Item Catalog project from the Github repository you created earlier in this Nanodegree program.
