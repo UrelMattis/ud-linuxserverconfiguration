@@ -163,4 +163,6 @@ During the submission process, paste the contents of the grader user's SSH key i
   * https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
   * https://www.youtube.com/watch?v=HcwK8IWc-a8
   * http://httpd.apache.org/
+  * http://manpages.ubuntu.com/manpages/xenial/en/man5/sshd_config.5.html
+  * https://serverfault.com/questions/265410/ubuntu-server-message-says-packages-can-be-updated-but-apt-get-does-not-update
  
