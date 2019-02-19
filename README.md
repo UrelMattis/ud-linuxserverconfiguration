@@ -69,7 +69,7 @@ During the submission process, paste the contents of the grader user's SSH key i
   chmod 644 /home/grader/.ssh/authorized_keys
   ```
  * Check ```/etc/ssh/sshd_config``` to verify if PasswordAuthentication is set to no.
- 
+  * Change this line ```#PermitRootLogin yes``` to ```#PermitRootLogin no```.
  * Restart ```sudo service ssh restart```.
  
   ## Prepare to deploy your project.
