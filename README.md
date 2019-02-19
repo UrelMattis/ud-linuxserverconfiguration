@@ -160,7 +160,7 @@ During the submission process, paste the contents of the grader user's SSH key i
   * Restart Apache and launch app ```sudo service apache2 restart```.
   
   # Resources
-  https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
-  https://www.youtube.com/watch?v=HcwK8IWc-a8
-  http://httpd.apache.org/
+  * https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
+  * https://www.youtube.com/watch?v=HcwK8IWc-a8
+  * http://httpd.apache.org/
  
