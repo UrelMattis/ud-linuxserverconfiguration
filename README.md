@@ -14,20 +14,20 @@ During the submission process, paste the contents of the grader user's SSH key i
 
 # Project Walkthrough
 ## Get your server.
-* Start a new Ubuntu Linux server instance on Amazon Lightsail. There are full details on setting up your Lightsail instance on the next page.
-* Follow the instructions provided to SSH into your server.
+1. Start a new Ubuntu Linux server instance on Amazon Lightsail. There are full details on setting up your Lightsail instance on the next page.
+2. Follow the instructions provided to SSH into your server.
 
 ## Secure your server.
-* Update all currently installed packages.
+1. Update all currently installed packages.
   ```
   sudo apt-get update
   sudo apt-get upgrade
   ```
-* Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
+2. Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
    Edit the ```etc/ssh/sshd_config``` file by using this command ```sudo nano /etc/ssh/sshd_config```.
    Change the port number on line 5 from 22 to 2200.
    Save and Exit using Ctl + X and then confirm with Y.
-* Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
+3. Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
   ```
   sudo ufw allow 2200/tcp
   sudo ufw allow 80/tcp
@@ -35,33 +35,33 @@ During the submission process, paste the contents of the grader user's SSH key i
   sudo ufw enable
   ```
   ## Give Grader Access
-* Create a new user account named grader.
+1. Create a new user account named grader.
   ```
   sudo adduser grader
   ```
-* Give grader the permission to sudo.
+2. Give grader the permission to sudo.
    Edit the subdoer file.
   ```
   sudo visudo
   ```
-* Add line to give grader the permission to sudo.
+3. Add line to give grader the permission to sudo.
   ```
   grader  ALL=(ALL:ALL) ALL
   ```
    Save and Exit using Ctl + X and then confirm with Y.
   
-* Test sudo access.
+4. Test sudo access.
   ```
   su -grader
   sudo -l
   ```
-* Create an SSH key pair for grader using the ssh-keygen tool.
+5. Create an SSH key pair for grader using the ssh-keygen tool.
   * Run command ```ssh-keygen```.
   * Enter blank response for grader information.
   * Copy contents from .pub file.
   * Log into grader VM.
 
-* Run commands.
+6. Run commands.
   ```
   mkdir /home/grader/.ssh
   sudo nano ~/.ssh/authorized_keys
@@ -73,22 +73,22 @@ During the submission process, paste the contents of the grader user's SSH key i
  * Restart ```sudo service ssh restart```.
  
   ## Prepare to deploy your project.
-* Configure the local timezone to UTC. 
+1. Configure the local timezone to UTC. 
   * Login to grader VM and run command ```sudo dpkg-reconfigure tzdata```. 
   Set to UTC.
-* Install and configure Apache to serve a Python mod_wsgi application.
+2. Install and configure Apache to serve a Python mod_wsgi application.
   * Run command ```sudo apt-get install apache2```.
-* Install and configure PostgreSQL:
+3. Install and configure PostgreSQL:
   * Run ```sudo apt-get install libapache2-mod-wsgi python-dev``` command.
   * Enable mod_wsgi with ```sudo a2enmod wsgi``` command.
   * Start the web server with ```sudo service apache2 start``` command.
-* Install git ```sudo apt-get install git```.
+4. Install git ```sudo apt-get install git```.
  
  ## Deploy the Item Catalog project.
-* Clone and setup your Item Catalog project from the Github repository you created earlier in this Nanodegree program.
+1. Clone and setup your Item Catalog project from the Github repository you created earlier in this Nanodegree program.
   * Create ```/var/www/catalog/``` directory.
   * Clone the catalog project: ```sudo git clone https://github.com/UrelMattis/ud-itemcatalogproject.git```
-* Set up your server.
+2. Set up your server.
   * Create catalog.wsgi file and place text inside.
     ```
     import sys
@@ -158,7 +158,10 @@ During the submission process, paste the contents of the grader user's SSH key i
   GRANT ALL ON SCHEMA public TO catalog;
   ```
   * Restart Apache and launch app ```sudo service apache2 restart```.
-
-
+  
+  # Resources
+  https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
+  https://www.youtube.com/watch?v=HcwK8IWc-a8
+  https://www.youtube.com/watch?v=hZ0cUWWixqU
 
  
