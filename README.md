@@ -162,6 +162,5 @@ During the submission process, paste the contents of the grader user's SSH key i
   # Resources
   https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
   https://www.youtube.com/watch?v=HcwK8IWc-a8
-  https://www.youtube.com/watch?v=hZ0cUWWixqU
-
+  http://httpd.apache.org/
  
